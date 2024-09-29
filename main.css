@@ -1,0 +1,657 @@
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Стили для заголовка */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    z-index: 999;
+    padding: 15px 30px; /* Увеличено внутреннее отступление */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Добавлена тень */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #c82333;
+    font-weight: bold; /* Добавлен жирный шрифт */
+    transition: color 0.3s; /* Плавный переход цвета */
+}
+
+.logo a:hover {
+    color: #a71d2a; /* Цвет при наведении */
+}
+
+.menu-list {
+    display: flex;
+    width: 500px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-link a {
+    margin-right: 20px;
+    color: #222;
+    text-decoration: none;
+    font-weight: 500; /* Полу-жирный шрифт */
+    transition: color 0.3s; /* Плавный переход цвета */
+}
+
+.menu-link a:hover {
+    color: #c82333; /* Цвет при наведении */
+}
+
+.cart-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px; /* Увеличен размер шрифта */
+    transition: color 0.3s; /* Плавный переход цвета */
+}
+
+.cart-btn:hover {
+    color: #c82333; /* Цвет при наведении */
+}
+
+
+@media (max-width: 768px) {
+    .menu-list {
+        display: none;
+    }
+
+    .cart-btn {
+        margin-right: 10px;
+    }
+
+    .cart-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .cart {
+        background-color: #fff;
+        padding: 20px;
+        width: 80%;
+    }
+
+    .cart-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+}
+/* Стили для кнопки корзины */
+.cart-btn {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative; /* Позволяет позиционировать количество */
+}
+
+.cart-qty {
+    background-color: #dc3545; /* Красный фон для количества */
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    position: absolute;
+    top: -5px; /* Позиция по вертикали */
+    right: -10px; /* Позиция по горизонтали */
+}
+
+.catalog {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Изменено на flex-start для поднятия слайдера */
+    height: 100vh;
+    padding-top: 20px; /* Добавлено отступ для поднятия слайдера */
+}
+
+.slider-container {
+    position: relative;
+    width: 80%;
+    overflow: hidden; /* Hide overflow for the slider */
+    border-radius: 10px; /* Добавлено закругление углов */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Улучшенная тень */
+    background-color: #f9f9f9; /* Светлый фон для контейнера слайдера */
+}
+
+.books-list {
+    display: flex; /* Use flexbox for horizontal scrolling */
+    transition: transform 0.5s ease; /* Smooth transition for sliding */
+}
+
+.book-item {
+    min-width: 180px; /* Увеличена ширина для более комфортного просмотра */
+    margin: 0 10px; /* Margin between items */
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); /* Увеличена тень для глубины */
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.book-item:hover {
+    transform: scale(1.05); /* Увеличение эффекта при наведении */
+}
+
+.book-item img {
+    width: 90%;
+    height: auto;
+    margin: 10px 0;
+    border-radius: 5px; /* Закругление углов изображений */
+}
+
+.book-item h3 {
+    font-size: 18px; /* Увеличен размер заголовка */
+    margin: 5px 0;
+    color: #333; /* Темный цвет для заголовка */
+}
+
+.book-item p {
+    font-size: 14px; /* Увеличен размер текста для лучшей читабельности */
+    color: #666;
+}
+
+.add-to-cart-btn {
+    background-color: #dc3545; /* Красный цвет кнопки */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px; /* Увеличен размер кнопки */
+    cursor: pointer;
+    font-size: 14px;
+    margin: 10px auto;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #c82333; /* Темнее при наведении */
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.9); /* Чуть более прозрачный фон */
+    border: none;
+    padding: 10px 15px; /* Увеличен размер кнопок */
+    cursor: pointer;
+    border-radius: 5px; /* Закругление углов кнопок */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Тень для кнопок */
+    transition: background-color 0.3s; /* Плавный переход для кнопок */
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(255, 255, 255, 1); /* Полностью белый при наведении */
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.cart-overlay {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 20%; /* Adjust this value to move the modal higher */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white; /* Background color */
+    border: 1px solid #ccc; /* Border */
+    padding: 20px; /* Padding */
+    z-index: 1000; /* Ensure it's on top */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+.slider-container {
+    position: relative; /* Ensure slider can be layered */
+    z-index: 1; /* Lower than the modal */
+}
+
+.cart-display {
+    background: white; /* Белый фон для корзины */
+    border-radius: 8px; /* Скругление углов */
+    padding: 30px; /* Увеличение отступов */
+    max-width: 600px; /* Увеличение максимальной ширины корзины */
+    width: 90%; /* Полная ширина до максимума */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Увеличенная тень */
+}
+
+/* Стили для элементов корзины */
+.cart-item {
+    display: flex; /* Горизонтальное выравнивание */
+    align-items: center; /* Вертикальное выравнивание по центру */
+    margin-bottom: 20px; /* Увеличение отступа между элементами корзины */
+}
+
+.cart-item img {
+    width: 60px; /* Увеличение ширины изображения в корзине */
+    height: auto; /* Автоматическая высота */
+    margin-right: 15px; /* Увеличение отступа справа */
+}
+
+.cart-total {
+    margin-top: 30px; /* Увеличение отступа сверху */
+    text-align: right; /* Выравнивание текста вправо */
+}
+
+/* Стили для кнопок удаления из корзины */
+.remove-from-cart-btn {
+    background-color: #dc3545; /* Красный цвет */
+    color: white; /* Цвет текста */
+    border: none; /* Убираем рамку */
+    border-radius: 5px; /* Скругление углов */
+    padding: 5px 10px; /* Отступы */
+    cursor: pointer; /* Курсор при наведении */
+    font-size: 12px; /* Размер текста */
+    margin-left: auto; /* Выравнивание вправо */
+}
+
+.main-container {
+    width: 75%;
+    margin: auto;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.main-content h5 {
+    font-size: 22px;
+    color: red;
+    font-weight: 550;
+}
+
+.main-content h2 {
+    font-size: 48px;
+    width: 340px;
+    margin-top: 10px;
+    margin-bottom: 24px;
+}
+
+.main-content p {
+    margin-bottom: 60px;
+}
+
+.main-content .main-btn {
+    background: rgb(234, 126, 126);
+    border: 1px solid transparent;
+    font-size: 24px;
+    color: white;
+    font-weight: 400;
+    padding: 12px 30px;
+    border-radius: 50px;
+    transition: all .5s;
+    text-decoration: none;
+}
+
+.main-content .main-btn:hover {
+    color: #dc3545;
+    background-color: white;
+    border: 1px solid red;
+}
+
+.main-picture img {
+    width: 560px;
+    height: auto;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.counter .counter-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 8rem;
+    align-items: center;
+}
+
+.counter .counter-row .col-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border: 0.2rem solid orange;
+    position: relative;
+    padding: 4rem;
+}
+
+.counter .counter-row .col-1 i {
+    position: absolute;
+    width: 55px;
+    height: 60px;
+    top: -2rem;
+    font-size: 55px;
+    color: rgb(222, 88, 88);
+    background-color: white;
+}
+
+.counter .counter-row .col-1 span.num {
+    padding-top: 1rem;
+    font-size: 3.2rem;
+    color: #dc3545;
+    font-weight: 600;
+}
+
+.counter .counter-row .col-1 span.text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(32, 32, 139);
+}
+
+.questions-container {
+    width: 75%;
+    margin: auto;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.accordion {
+    padding: 25px;
+    background-color: white;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.05);
+}
+
+.accordion h2 {
+    margin: 10px 2px 25px;
+    font-size: 18px;
+    color: #111;
+}
+
+.accordion .item {
+    margin: 15px 0px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.accordion > div:nth-child(2) {
+    background-color: #e8eef5;
+    border-left: 4px solid #21b1ea;
+}
+
+.accordion > div:nth-child(3) {
+    background-color: #f5e8e8;
+    border-left: 4px solid #ea2121;
+}
+
+.accordion > div:nth-child(4) {
+    background-color: #efeeed;
+    border-left: 4px solid #eaa421;
+}
+
+.accordion > div:nth-child(5) {
+    background-color: #eee3ef;
+    border-left: 4px solid #df21ea;
+}
+
+.accordion > div:nth-child(6) {
+    background-color: #eaeae0;
+    border-left: 4px solid #c5c51c;
+}
+
+.accordion .item .question {
+    position: relative;
+    padding: 10px 0;
+    padding-left: 40px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #222;
+    cursor: pointer;
+}
+
+.accordion .item .question:before {
+    content: '+';
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translate(-50%, -50%) rotate(0deg);
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 400;
+    text-align: center;
+    color: #555;
+    transition: all 300ms ease-in-out;
+}
+
+.accordion .item .answer {
+    max-height: 0px;
+    overflow: hidden;
+    font-size: 15px;
+    color: #222;
+    transition: max-height 300ms linear;
+}
+
+.accordion .item .answer > * {
+    margin: 5px 40px 15px;
+}
+
+.accordion .item .active .question::before {
+    transform: translate(-50%, -50%) rotate(145deg);
+}
+
+.accordion .item.active .answer {
+    max-height: 500px;
+}
+
+.reviews {
+    font-family: "Roboto", sans-serif;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10rem;
+    position: relative;
+    top: -300px;
+}
+.reviews-left h1 {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #dc3545;
+}
+.reviews-left p {
+    color: #222;
+    margin-bottom: 1rem;
+}
+
+.reviews-left button {
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+    outline: none;
+    border: none;
+    border-radius: 40px;
+    background-color: #dc3545;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.reviews-right {
+    display: grid;
+    gap: 2rem;
+}
+
+.card {
+    padding: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.card img {
+    max-width: 75px;
+    border-radius: 100%;
+}
+
+.card-content {
+    display: flex;
+    gap: 1rem;
+}
+
+.card-content span i {
+    font-size: 2rem;
+    color: #c82333;
+}
+
+.card-details p {
+    font-style: italic;
+    color: #222;
+    margin-bottom: 1rem;
+}
+
+.card-details h4 {
+    text-align: right;
+    color: #c82333;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: rgb(234, 96, 96);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    overflow: hidden;
+}
+.footer-menu li a {
+    color: white;
+    text-decoration: none;
+}
+.waves {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: 100px;
+    background-repeat: repeat-x;
+    background-size: 50% 100%;
+    animation: wave-animation 10s linear infinite;
+}
+
+#wave1 {
+    background-image: url('./path/to/wave1.svg'); /* Replace with your wave image */
+    animation-delay: 0s;
+}
+
+#wave2 {
+    background-image: url('./path/to/wave2.svg'); /* Replace with your wave image */
+    animation-delay: -5s;
+}
+
+#wave3 {
+    background-image: url('./path/to/wave3.svg'); /* Replace with your wave image */
+    animation-delay: -2.5s;
+}
+
+#wave4 {
+    background-image: url('./path/to/wave4.svg'); /* Replace with your wave image */
+    animation-delay: -7.5s;
+}
+
+@keyframes wave-animation {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Social Icons Styles */
+.social-icons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.social-icons li {
+    margin: 0 10px;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #ffcc00; /* Change color on hover */
+}
+
+/* Footer Menu Styles */
+.footer-menu {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
